@@ -1,3 +1,4 @@
+// @ts-nocheck
 // REACT
 import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';

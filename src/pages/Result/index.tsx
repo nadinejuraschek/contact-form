@@ -1,3 +1,4 @@
+// @ts-nocheck
 // TRANSLATION
 import { useTranslation } from 'react-i18next';
 
