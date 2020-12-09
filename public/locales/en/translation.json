@@ -1,0 +1,55 @@
+{
+  "LANG": {
+    "TITLE": "Language",
+    "DE": "German",
+    "EN": "English"
+  },
+  "FOOTER": {
+    "TERMS": "Terms & Conditions",
+    "PRIVACY": "Privacy Policy",
+    "IMPRESSUM": "Impressum"
+  },
+  "FORM": {
+    "TITLE": "Contact Us for Support",
+    "CAPTION": "Use this form to send us any questions, feedback, criticism or suggestions quickly and easily. We will get back to you as soon as possible.",
+    "REQUIRED": "Required Fields",
+    "NAME": {
+      "LABEL": "Name",
+      "PLACEHOLDER": "Name",
+      "ERROR": "Please enter your name.",
+      "ERROR_NUM": "Name should only contain letters."
+    },
+    "EMAIL": {
+      "LABEL": "Email Address",
+      "PLACEHOLDER": "Email Address",
+      "ERROR": "Please enter a valid email address."
+    },
+    "TOPIC": {
+      "LABEL": "Topic",
+      "CHOOSE": "Choose Option",
+      "GENERAL": "General Question",
+      "SOFTWARE": "Software Error",
+      "CALL": "Call Back",
+      "ERROR": "Please choose a topic."
+    },
+    "VERSION": {
+      "LABEL": "Version Number",
+      "ERROR": "Please enter the software's version number."
+    },
+    "PHONE": {
+      "LABEL": "Phone Number",
+      "ERROR": "Please enter your phone number."
+    },
+    "DESC": {
+      "LABEL": "Description",
+      "ERROR": "Please describe the issue."
+    },
+    "SEND": "Submit"
+  },
+  "RESULT": {
+    "TITLE": "Form Successfully Sent!",
+    "CAPTION": "We will get back to you shortly.",
+    "EDIT": "Edit Form",
+    "NEW": "New Form"
+  }
+}
