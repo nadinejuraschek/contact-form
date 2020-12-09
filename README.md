@@ -26,9 +26,6 @@
 * Icons von [Feather](https://feathericons.com/)
 * Font von [Google Fonts](https://fonts.google.com/)
 
-### Wireframes
-* https://www.figma.com/file/0xyNJ0JRKd2ra0HjoN4fEF/F11-Supportform-Wireframe?node-id=0%3A1
-
 ### Überlegungen
 * Package sanitize-html: hier nicht nötig, da Daten nur als Strings gesammelt und angezeigt werden
 * Package react-select: macht das Stylen von Selectfeldern und deren Optionen einfacher
