@@ -1,18 +1,15 @@
-// REACT
-import React from 'react';
-import ReactDOM from 'react-dom';
-
 // STYLES
 import './index.css';
+// TRANSLATION
+import './i18n';
 
 // COMPONENTS
 import App from './App';
-
 // CONTEXT
 import { FormDataProvider } from 'context/FormDataContext';
-
-// TRANSLATION
-import './i18n';
+// REACT
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 ReactDOM.render(
   <React.StrictMode>
