@@ -1,14 +1,14 @@
-// TRANSLATION
-import { useTranslation } from 'react-i18next';
-
 // STYLED COMPONENTS
 import { Blur, Container, English, German, Item, Label } from './styles';
+
+// TRANSLATION
+import { useTranslation } from 'react-i18next';
 
 interface DropdownProps {
   handleClick: (state: boolean) => void;
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ handleClick }) => {
+const Dropdown = ({ handleClick }: DropdownProps): JSX.Element => {
   const { i18n, t } = useTranslation();
 
   const changeLanguage = (lng: string) => {

@@ -1,31 +1,35 @@
 // REACT
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
+// STYLED COMPONENTS
+import { CharCount, Label, Textfield, Wrapper } from './styles';
 
 // COMPONENTS
 import ErrorMessage from 'components/ErrorMessage';
 
-// STYLED COMPONENTS
-import { CharCount, Label, Textfield, Wrapper } from './styles';
-
 interface TextareaProps {
   error: any;
-  inputRef: any;
   label: string;
   max: number;
   name: string;
   placeholder: string;
+  register: any;
 }
 
-const Textarea: React.FC<TextareaProps> = ({
+const Textarea = ({
   error,
-  inputRef,
   label,
   max,
   name,
   placeholder,
-}) => {
+  register,
+}: TextareaProps): JSX.Element => {
   const [chars, setChars] = useState(0);
   const [rows, setRows] = useState(1);
+
+  const handleInputChange = (event: ChangeEvent) => {
+    const target = event.target as HTMLTextAreaElement;
+    setChars(target.value.length);
+  };
 
   return (
     <Wrapper htmlFor={name}>
@@ -38,9 +42,9 @@ const Textarea: React.FC<TextareaProps> = ({
         placeholder={placeholder}
         onFocus={() => setRows(5)}
         rows={rows}
-        ref={inputRef}
+        {...register(name)}
         maxLength={max}
-        onChange={(event: any) => setChars(event.target.value.length)}
+        onChange={handleInputChange}
         error={error}
       />
       {error && <ErrorMessage message={error.message} />}

@@ -1,26 +1,19 @@
-// @ts-nocheck
-// REACT
-import { useContext } from 'react';
-import { useHistory } from 'react-router-dom';
-
-// TRANSLATION
-import { useTranslation } from 'react-i18next';
-
 // STYLED COMPONENTS
-import { Container, BtnWrapper } from './styles';
-
-// COMPONENTS
-import Item from 'components/Item';
-
-// CONTEXT
-import { FormDataContext } from 'context/FormDataContext';
+import { BtnWrapper, Container } from './styles';
 
 // COMPONENTS
 import Button from 'components/Button';
+// CONTEXT
+import { FormDataContext } from 'context/FormDataContext';
+// COMPONENTS
+import Item from 'components/Item';
+// REACT
+import { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+// TRANSLATION
+import { useTranslation } from 'react-i18next';
 
-interface PreviewProps {}
-
-const Preview: React.FC<PreviewProps> = () => {
+const Preview = (): JSX.Element => {
   const { t } = useTranslation();
   const { data, setData } = useContext(FormDataContext);
   const { name, email, topic, version, phone, description } = data;
@@ -32,11 +25,11 @@ const Preview: React.FC<PreviewProps> = () => {
     call: t('FORM.TOPIC.CALL'),
   };
 
-  const handleBackToForm = () => {
+  const handleBackToForm = (): void => {
     history.push('/');
   };
 
-  const handleNewForm = () => {
+  const handleNewForm = (): void => {
     setData({});
     history.push('/');
   };

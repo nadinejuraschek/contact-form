@@ -9,31 +9,29 @@ interface ButtonProps {
   disabled?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({
+const Button = ({
   disabled,
   handleClick,
   label,
   styleType,
   type,
-}) => {
-  return (
-    <>
-      {styleType === 'primary' ? (
-        <Primary onClick={handleClick} type={type} disabled={disabled}>
-          {label}
-        </Primary>
-      ) : styleType === 'secondary' ? (
-        <Secondary onClick={handleClick} type={type} disabled={disabled}>
-          {label}
-        </Secondary>
-      ) : (
-        <Language onClick={handleClick}>
-          <Icon />
-          <Label>{label}</Label>
-        </Language>
-      )}
-    </>
-  );
-};
+}: ButtonProps): JSX.Element => (
+  <>
+    {styleType === 'primary' ? (
+      <Primary onClick={handleClick} type={type} disabled={disabled}>
+        {label}
+      </Primary>
+    ) : styleType === 'secondary' ? (
+      <Secondary onClick={handleClick} type={type} disabled={disabled}>
+        {label}
+      </Secondary>
+    ) : (
+      <Language onClick={handleClick}>
+        <Icon />
+        <Label>{label}</Label>
+      </Language>
+    )}
+  </>
+);
 
 export default Button;

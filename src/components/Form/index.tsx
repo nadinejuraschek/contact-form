@@ -1,43 +1,40 @@
-// @ts-nocheck
-// REACT
-import { useContext } from 'react';
-import { useHistory } from 'react-router-dom';
-
-// DEPENDENCIES
-import { useForm } from "react-hook-form";
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from "yup";
-
-// TRANSLATION
-import { useTranslation } from 'react-i18next';
+import * as yup from 'yup';
 
 // STYLED COMPONENTS
 import { Container, Text } from './styles';
-
-// CONTEXT
-import { FormDataContext } from 'context/FormDataContext';
+// HELPERS
+import {
+  normalizePhoneNumber,
+  normalizeVersionNumber,
+} from 'helpers/validation';
 
 // COMPONENTS
 import Button from 'components/Button';
+// CONTEXT
+import { FormDataContext } from 'context/FormDataContext';
 import Input from 'components/Input';
 import Selecter from 'components/Selecter';
 import Textarea from 'components/Textarea';
-
-// HELPERS
-import { normalizeVersionNumber, normalizePhoneNumber } from 'helpers/validation';
+// @ts-nocheck
+// REACT
+import { useContext } from 'react';
+// DEPENDENCIES
+import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
+// TRANSLATION
+import { useTranslation } from 'react-i18next';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 interface IFormInputs {
   name: string;
   email: string;
-  topic: "general" | "software" | "call";
+  topic: 'general' | 'software' | 'call';
   version?: number;
   phone?: number;
   description: string;
-};
+}
 
-interface FormProps {};
-
-const Form: React.FC<FormProps> = () => {
+const Form = (): JSX.Element => {
   const { t } = useTranslation();
   const history = useHistory();
   const { data, setData } = useContext(FormDataContext);
@@ -47,7 +44,10 @@ const Form: React.FC<FormProps> = () => {
     name: yup
       .string()
       .required(t('FORM.NAME.ERROR'))
-      .matches(/^[\u00C0-\u017Fa-zA-Z'][\u00C0-\u017Fa-zA-Z-' ]+[\u00C0-\u017Fa-zA-Z']?$/, t('FORM.NAME.ERROR_NUM')),
+      .matches(
+        /^[\u00C0-\u017Fa-zA-Z'][\u00C0-\u017Fa-zA-Z-' ]+[\u00C0-\u017Fa-zA-Z']?$/,
+        t('FORM.NAME.ERROR_NUM')
+      ),
     email: yup
       .string()
       .lowercase()
@@ -57,18 +57,18 @@ const Form: React.FC<FormProps> = () => {
       .string()
       .oneOf(['general', 'software', 'call'], t('FORM.TOPIC.ERROR'))
       .required(t('FORM.TOPIC.ERROR')),
-    version: yup
-      .string()
-      .min(5, t('FORM.VERSION.ERROR')),
-    phone: yup
-      .string()
-      .min(10, t('FORM.PHONE.ERROR')),
-    description: yup
-      .string()
-      .required(t('FORM.DESC.ERROR'))
+    version: yup.string().min(5, t('FORM.VERSION.ERROR')),
+    phone: yup.string().min(10, t('FORM.PHONE.ERROR')),
+    description: yup.string().required(t('FORM.DESC.ERROR')),
   });
 
-  const { register, handleSubmit, errors, watch, formState } = useForm<IFormInputs>({
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState,
+    formState: { errors },
+  } = useForm<IFormInputs>({
     defaultValues: {
       name: data.name,
       email: data.email,
@@ -78,7 +78,7 @@ const Form: React.FC<FormProps> = () => {
       description: data.description,
     },
     resolver: yupResolver(schema),
-    mode: "onChange",
+    mode: 'onChange',
   });
 
   const onSubmit = (formData: IFormInputs) => {
@@ -87,10 +87,10 @@ const Form: React.FC<FormProps> = () => {
   };
 
   const selecterOptions = [
-    { label: t('FORM.TOPIC.CHOOSE'), value: "" },
-    { label: t('FORM.TOPIC.GENERAL'), value: "general" },
-    { label: t('FORM.TOPIC.SOFTWARE'), value: "software" },
-    { label: t('FORM.TOPIC.CALL'), value: "call" },
+    { label: t('FORM.TOPIC.CHOOSE'), value: '' },
+    { label: t('FORM.TOPIC.GENERAL'), value: 'general' },
+    { label: t('FORM.TOPIC.SOFTWARE'), value: 'software' },
+    { label: t('FORM.TOPIC.CALL'), value: 'call' },
   ];
 
   return (
@@ -98,73 +98,71 @@ const Form: React.FC<FormProps> = () => {
       <Text>* {t('FORM.REQUIRED')}</Text>
       <Input
         label={`${t('FORM.NAME.LABEL')} *`}
-        name="name"
+        name='name'
         placeholder={t('FORM.NAME.PLACEHOLDER')}
-        inputRef={register}
+        register={register}
         error={errors.name}
-        type="text"
+        type='text'
       />
       <Input
         label={`${t('FORM.EMAIL.LABEL')} *`}
-        name="email"
+        name='email'
         placeholder={t('FORM.EMAIL.PLACEHOLDER')}
-        inputRef={register}
+        register={register}
         error={errors.email}
-        type="email"
+        type='email'
       />
       <Selecter
         handleSelect={(event: any) => console.log(event.value)}
         label={`${t('FORM.TOPIC.LABEL')} *`}
-        name="topic"
+        name='topic'
         options={selecterOptions}
-        inputRef={register}
+        register={register}
         error={errors.topic}
       />
-      {
-        watch('topic') === 'software' &&
+      {watch('topic') === 'software' && (
         <Input
           label={`${t('FORM.VERSION.LABEL')} *`}
-          name="version"
-          placeholder="10.11.12"
+          name='version'
+          placeholder='10.11.12'
           handleChange={(event: any) => {
-            const { value } = event.target;
+            const { value } = event.target;
             event.target.value = normalizeVersionNumber(value);
           }}
-          inputRef={register}
+          register={register}
           error={errors.version}
-          type="tel"
-          mode="numeric"
+          type='tel'
+          mode='numeric'
           max={10}
         />
-      }
-      {
-        watch('topic') === 'call' &&
+      )}
+      {watch('topic') === 'call' && (
         <Input
           label={`${t('FORM.PHONE.LABEL')} *`}
-          name="phone"
-          placeholder="+49 123 45678900"
+          name='phone'
+          placeholder='+49 123 45678900'
           handleChange={(event: any) => {
-            const { value } = event.target;
+            const { value } = event.target;
             event.target.value = normalizePhoneNumber(value);
           }}
-          inputRef={register}
+          register={register}
           error={errors.phone}
-          type="tel"
-          mode="numeric"
+          type='tel'
+          mode='numeric'
         />
-      }
+      )}
       <Textarea
         label={`${t('FORM.DESC.LABEL')} *`}
-        name="description"
+        name='description'
         placeholder={t('FORM.DESC.LABEL')}
-        inputRef={register}
+        register={register}
         error={errors.description}
         max={800}
       />
       <Button
         label={t('FORM.SEND')}
-        styleType="primary"
-        type="submit"
+        styleType='primary'
+        type='submit'
         disabled={!formState.isValid}
       />
     </Container>

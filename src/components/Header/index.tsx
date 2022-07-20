@@ -6,13 +6,11 @@ interface HeaderProps {
   title?: string;
 }
 
-const Header: React.FC<HeaderProps> = ({ caption, title }) => {
-  return (
-    <Container>
-      <Title>{title}</Title>
-      <Caption>{caption}</Caption>
-    </Container>
-  );
-};
+const Header = ({ caption, title }: HeaderProps): JSX.Element => (
+  <Container>
+    <Title>{title}</Title>
+    <Caption>{caption}</Caption>
+  </Container>
+);
 
 export default Header;

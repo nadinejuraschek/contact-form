@@ -1,19 +1,19 @@
+// ROUTER
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 // REACT
 import React, { Suspense } from 'react';
 
-// ROUTER
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-
+// CONTEXT
+import { FormDataProvider } from 'context/FormDataContext';
 // COMPONENTS
 import Layout from 'components/Layout';
+import Result from 'pages/Result';
 import Spinner from 'components/Spinner';
-
 // PAGES
 import Support from 'pages/Support';
-import Result from 'pages/Result';
 
-const App: React.FC = () => {
-  return (
+const App = (): JSX.Element => (
+  <FormDataProvider>
     <Suspense fallback={<Spinner />}>
       <Layout>
         <BrowserRouter>
@@ -28,7 +28,7 @@ const App: React.FC = () => {
         </BrowserRouter>
       </Layout>
     </Suspense>
-  );
-};
+  </FormDataProvider>
+);
 
 export default App;

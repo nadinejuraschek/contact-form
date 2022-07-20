@@ -5,13 +5,11 @@ interface ErrorMessageProps {
   message: string;
 }
 
-const ErrorMessage: React.FC<ErrorMessageProps> = ({ message }) => {
-  return (
-    <Error>
-      <ErrorIcon />
-      {message}
-    </Error>
-  );
-};
+const ErrorMessage = ({ message }: ErrorMessageProps): JSX.Element => (
+  <Error>
+    <ErrorIcon />
+    {message}
+  </Error>
+);
 
 export default ErrorMessage;

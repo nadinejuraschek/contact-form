@@ -1,7 +1,7 @@
 // DEPENDENCIES
 import { parsePhoneNumberFromString } from 'libphonenumber-js';
 
-export const normalizeVersionNumber = (value: string) => {
+export const normalizeVersionNumber = (value: string): string => {
   // uncommented function allows only digits to be entered, but needs users to place "." themselves
   // return value.match('^[0-9][0-9.]*$');
 
@@ -9,14 +9,14 @@ export const normalizeVersionNumber = (value: string) => {
   value = value.replace(/[^\d]/g, '');
   if (value.length <= 3) {
     return value;
-  };
-  return `${value.slice(0, 2)}.${value.slice(2, 4)}.${value.slice(4,7)}`
+  }
+  return `${value.slice(0, 2)}.${value.slice(2, 4)}.${value.slice(4, 7)}`;
 };
 
-export const normalizePhoneNumber = (value: string) => {
+export const normalizePhoneNumber = (value: string): string => {
   const phoneNum = parsePhoneNumberFromString(value);
   if (!phoneNum) {
     return value;
-  };
+  }
   return phoneNum.formatInternational();
 };

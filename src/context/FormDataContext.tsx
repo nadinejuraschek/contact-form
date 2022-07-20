@@ -6,14 +6,14 @@ type ContextProps = {
   setData: (values: any) => void;
 };
 
-type ProviderProps = { children: React.ReactNode };
+type ProviderProps = { children: JSX.Element };
 
 export const FormDataContext = createContext<ContextProps>({
   data: {},
   setData: (values: any) => console.log('Data is empty.'),
 });
 
-export const FormDataProvider = ({ children }: ProviderProps) => {
+export const FormDataProvider = ({ children }: ProviderProps): JSX.Element => {
   const [data, setData] = useState({});
 
   return (

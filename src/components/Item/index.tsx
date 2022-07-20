@@ -1,18 +1,16 @@
 // STYLED COMPONENTS
-import { Wrapper, Label, Result } from './styles';
+import { Label, Result, Wrapper } from './styles';
 
 interface ItemProps {
   data?: string;
   label: string;
 }
 
-const Item: React.FC<ItemProps> = ({ data, label }) => {
-  return (
-    <Wrapper>
-      <Label>{label}</Label>
-      <Result>{data}</Result>
-    </Wrapper>
-  );
-};
+const Item = ({ data, label }: ItemProps): JSX.Element => (
+  <Wrapper>
+    <Label>{label}</Label>
+    <Result>{data}</Result>
+  </Wrapper>
+);
 
 export default Item;

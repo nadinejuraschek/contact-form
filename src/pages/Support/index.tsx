@@ -1,14 +1,10 @@
-// @ts-nocheck
+import Form from 'components/Form';
+// COMPONENTS
+import Header from 'components/Header';
 // TRANSLATION
 import { useTranslation } from 'react-i18next';
 
-// COMPONENTS
-import Header from 'components/Header';
-import Form from 'components/Form';
-
-interface SupportProps {}
-
-const Support: React.FC<SupportProps> = () => {
+const Support = (): JSX.Element => {
   const { t } = useTranslation();
 
   return (

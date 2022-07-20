@@ -1,14 +1,11 @@
+// COMPONENTS
+import Header from 'components/Header';
+import Preview from 'components/Preview';
 // @ts-nocheck
 // TRANSLATION
 import { useTranslation } from 'react-i18next';
 
-// COMPONENTS
-import Header from 'components/Header';
-import Preview from 'components/Preview';
-
-interface ResultProps {}
-
-const Result: React.FC<ResultProps> = () => {
+const Result = (): JSX.Element => {
   const { t } = useTranslation();
 
   return (

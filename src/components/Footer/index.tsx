@@ -1,12 +1,10 @@
+// STYLED COMPONENTS
+import { Container, Copyright, Links, PlaceholderLink } from './styles';
+
 // TRANSLATIONS
 import { useTranslation } from 'react-i18next';
 
-// STYLED COMPONENTS
-import { Copyright, Container, Links, PlaceholderLink } from './styles';
-
-interface FooterProps {}
-
-const Footer: React.FC<FooterProps> = () => {
+const Footer = (): JSX.Element => {
   const { t } = useTranslation();
 
   return (

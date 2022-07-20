@@ -1,23 +1,23 @@
 // STYLED COMPONENTS
-import { BgWhite, BgShape, Main, Wrapper } from './styles';
+import { BgShape, BgWhite, Main, Wrapper } from './styles';
 
+import Footer from 'components/Footer';
 // COMPONENTS
 import Navbar from 'components/Navbar';
-import Footer from 'components/Footer';
 
-interface LayoutProps {}
+interface LayoutProps {
+  children: JSX.Element;
+}
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
-  return (
-    <Wrapper>
-      <BgWhite>
-        <BgShape />
-      </BgWhite>
-      <Navbar />
-      <Main>{children}</Main>
-      <Footer />
-    </Wrapper>
-  );
-};
+const Layout = ({ children }: LayoutProps): JSX.Element => (
+  <Wrapper>
+    <BgWhite>
+      <BgShape />
+    </BgWhite>
+    <Navbar />
+    <Main>{children}</Main>
+    <Footer />
+  </Wrapper>
+);
 
 export default Layout;
