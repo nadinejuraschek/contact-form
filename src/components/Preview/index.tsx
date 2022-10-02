@@ -9,7 +9,7 @@ import { FormDataContext } from 'context/FormDataContext';
 import Item from 'components/Item';
 // REACT
 import { useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // TRANSLATION
 import { useTranslation } from 'react-i18next';
 
@@ -17,7 +17,7 @@ const Preview = (): JSX.Element => {
   const { t } = useTranslation();
   const { data, setData } = useContext(FormDataContext);
   const { name, email, topic, version, phone, description } = data;
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const topicLabel: { [topic: string]: string } = {
     general: t('FORM.TOPIC.GENERAL'),
@@ -26,12 +26,12 @@ const Preview = (): JSX.Element => {
   };
 
   const handleBackToForm = (): void => {
-    history.push('/');
+    navigate('/');
   };
 
   const handleNewForm = (): void => {
     setData({});
-    history.push('/');
+    navigate('/');
   };
 
   return (

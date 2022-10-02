@@ -20,7 +20,7 @@ import Textarea from 'components/Textarea';
 import { useContext } from 'react';
 // DEPENDENCIES
 import { useForm } from 'react-hook-form';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // TRANSLATION
 import { useTranslation } from 'react-i18next';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -36,7 +36,7 @@ interface IFormInputs {
 
 const Form = (): JSX.Element => {
   const { t } = useTranslation();
-  const history = useHistory();
+  const navigate = useNavigate();
   const { data, setData } = useContext(FormDataContext);
 
   // SCHEMA VALIDATION
@@ -83,7 +83,7 @@ const Form = (): JSX.Element => {
 
   const onSubmit = (formData: IFormInputs) => {
     setData(formData);
-    history.push('/result');
+    navigate('/result');
   };
 
   const selecterOptions = [
